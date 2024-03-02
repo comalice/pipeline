@@ -15,7 +15,7 @@ from abc import ABC
 import click
 import pandas as pd
 
-from pipeline.market_data.yahoo import Yahoo
+from pipeline2.market_data.yahoo import Yahoo
 
 
 class IRepository(ABC):
@@ -240,13 +240,13 @@ class ReportStatsByTicker:
 @click.command()
 @click.argument('filepath', type=click.Path(exists=True))
 def main(filepath):
-    # This will be shared between the various steps in the pipeline.
+    # This will be shared between the various steps in the pipeline2.
     catalog = PortfolioCatalog()
 
-    # init pipeline
+    # init pipeline2
     pipeline = Pipeline(catalog)
 
-    # add steps to pipeline
+    # add steps to pipeline2
     # Add predefined steps
     # 1. update portfolio if the file has changed
     pipeline.add_step(UpdatePortfolio(filepath), "default")
@@ -263,7 +263,7 @@ def main(filepath):
 
     pipeline.show_execution_order()
 
-    # run pipeline
+    # run pipeline2
     pipeline.run()
 
 

@@ -126,9 +126,9 @@ if __name__ == "__main__":
     # Resolve DataService instance from the factory
     resolved_data_service = container.data_service()  # Resolve the factory
 
-    # Build the pipeline with resolved DataService
+    # Build the pipeline2 with resolved DataService
     start_node = DoubleNode(resolved_data_service)
     start_node.next_node = PrintNode(resolved_data_service)
 
-    # Trigger pipeline execution
+    # Trigger pipeline2 execution
     start_node.process(Data(10))
